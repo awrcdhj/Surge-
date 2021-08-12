@@ -1,10 +1,320 @@
-- 👋 Hi, I’m @awrcdhj
-- 👀 I’m interested in ...
-- 🌱 I’m currently learning ...
-- 💞️ I’m looking to collaborate on ...
-- 📫 How to reach me ...
+[general]
 
-<!---
-awrcdhj/awrcdhj is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+# DNS 排除列表
+
+# dns_exclusion_list 包含了禁用占位符 IP (240.*) 的域，不在 dns_exclusion_list 中的域都启用了占位符 IP，并打开了 resolve-on-remote 设置。
+
+dns_exclusion_list=*.cmpassport.com, *.jegotrip.com.cn, *.icitymobile.mobi, id6.me, *.pingan.com.cn
+
+#geo_location_checker用于节点页面的节点信息展示，可完整自定义展示内容与方式
+
+geo_location_checker=http://ip-api.com/json/?lang=zh-CN, https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/Script/IP_API.js
+
+#资源解析器，可用于自定义各类远程资源的转换，如节点，规则 filter，复写 rewrite 等，url 地址可远程，可 本地/iCloud(Quantumult X/Scripts目录);
+
+resource_parser_url=https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/Script/resource-parser.js
+
+# Quantumult 使用 HEAD 方法将 HTTP 请求发送到服务器检查 url 来测试代理的状态，结果应该是两个延迟，第一个是 TCP 与代理服务器的握手，第二个是 Quantumult 成功地从服务器检查 url 接收 HTTP 响应的总时间。闪电图标表示 TCP Fast Open 成功。如果 [server_local] 或 [server_remote] 中的服务器有自己的 server_check_url，则会用自己的 server_check_url 代替 [general] 中的 server_check_url。
+
+# Quantumult 使用 HTTP HEAD 方法对测试网址 server_check_url 进行网页响应性测试(测试结果为通过该节点访问此网页获得 HTTP 响应所需要的时间)，来确认节点的可用性。
+
+# Quantumult 界面中的延迟测试方式均为网页响应性测试，显示的最终延迟均为通过对应节点访问测试网页获得 HTTP 响应所需要时间。
+
+# 由于 Trojan 协议为无响应校验协议，使得 HTTP 检测方式即使获得了 HTTP 响应，也不代表节点一定可用。
+
+server_check_url=http://cp.cloudflare.com/generate_204
+
+# filter - 规则分流，all_proxy - 全部代理，all_direct - 全部直连
+
+# 示例意思：[蜂窝数据],[Wi-Fi],[SSID]
+
+# 下列示例的意思为：在蜂窝数据使用规则分流(第一个 filter)，在 Wi-Fi 使用规则分流(第二个 filter)，在 SSID 为 LINK_22E171 的 Wi-Fi 使用全部代理，，在 SSID 为 LINK_22E172 的 Wi-Fi 使用全部直连
+
+# Rewrite 及 Task 模块始终生效
+
+;running_mode_trigger=filter, filter, wifi1:all_direct, wifi2: all_direct
+
+#ssid_suspended_list，让 Quantumult X 在特定 Wi-Fi 网络下暂停工作(仅 task 模块会继续工作)，多个Wi-Fi用“,”连接
+
+;ssid_suspended_list=ZZM-5G
+
+# Quantumult 将不会处理到 excluded_routes 的流量。修改后最好重新启动您的设备。
+
+;excluded_routes=192.168.0.0/16, 172.16.0.0/12, 100.64.0.0/10, 10.0.0.0/8
+
+;Hearthstone: 24.105.30.129/32, 185.60.112.157/32, 185.60.112.158/32, 182.162.132.1/32
+
+excluded_routes=239.255.255.250/32, 24.105.30.129/32, 185.60.112.157/32, 185.60.112.158/32, 182.162.132.1/32
+
+# 参数 udp_whitelist 从 IP 层控制 UDP 数据是否需要舍弃；如舍弃，则该 UDP 请求不会进入规则模块以及策略模块，TCP/UDP 请求记录中也不会有相应的条目，但仍可在日志中查询到相关信息（日志等级 debug）。
+
+# 该参数控制的是流入 Quantumult X Tunnel 的请求，并非 Quantumult X Tunnel 发出的请求，即不会作用于节点所使用的 UDP 目标端口。
+
+udp_whitelist=53, 123, 1900, 80-443
+
+# 说明：参数 fallback_udp_policy 的值仅支持末端策略（末端策略为经由规则模块和策略模块后所命中的策略，例如：direct、reject 以及节点；不支持内置策略 proxy 以及其它自定义策略）。默认为 reject。
+
+# 当 UDP 请求经过规则模块以及策略模块后所命中的节点为 Quantumult X 所不支持 UDP 转发的节点（如：VMess、trojan），或支持 UDP 转发但未注明 udp-relay=true 的（例如：SS/SSR 且与服务器是否真实开启 UDP 转发无关），则 fallback_udp_policy 会被使用。
+
+# 注意：如果您需要调整该参数的值为 direct，请务必清楚了解同一目标主机名 TCP 请求与 UDP 请求的源地址不同所造成的隐私及安全风险。
+
+fallback_udp_policy=direct
+
+;icmp_auto_reply=true
+
+[dns]
+
+# 从当前网络（系统）获取的 DNS 服务器将始终用于更好的性能（您可以使用“no-system”禁用此功能，但您至少应该添加一个自定义的 DNS 服务器，例如“server=223.5.5.5” ）。
+
+# 当设置no-ipv6时，Quanumult X Tunnel的DNS模块会直接让AAAA查询失败，但仍然允许来自IPv6 DNS服务器的A查询。
+
+# 查询的结果只会用于评估过滤器或通过直接策略连接，通过服务器连接时不会使用结果并且Quantumult永远不会知道相关域的目标IP。
+
+# 设置 doh-server 后，所有其他常规（没有与之相关的特定域）服务器将被忽略。
+
+# 当设置了多个 doh-server(s) 时，只会使用第一个。
+
+# 当使用的 doh-server 不是基于 HTTP/2 时，DoH 将被暂时禁用，常规服务器将被使用，直到下一次 VPN 连接开始。
+
+;doh-server=https://dns.alidns.com/dns-query
+
+;doh-server=https://223.6.6.6/dns-query
+
+# 此处不允许专门为域直接设置127.0.0.1。如果您希望某个域（例如：example.com）为 127.0.0.1，只需在“filter_local”部分添加“host、example.com、reject”即可。拒绝操作将向查询返回带有 127.0.0.1 的 DNS 响应。
+
+no-ipv6
+
+#指定的 dns服务器
+
+server=119.29.29.29:53
+
+server=114.114.114.114
+
+;server=119.28.28.28
+
+;server=223.5.5.5
+
+;server=1.2.4.8
+
+#指定的 网址dns
+
+server=/*.taobao.com/223.5.5.5
+
+server=/*.tmall.com/223.5.5.5
+
+server=/*.alipay.com/223.5.5.5
+
+server=/*.alicdn.com/223.5.5.5
+
+server=/*.aliyun.com/223.5.5.5
+
+server=/*.jd.com/119.28.28.28
+
+server=/*.qq.com/119.28.28.28
+
+server=/*.tencent.com/119.28.28.28
+
+server=/*.weixin.com/119.28.28.28
+
+server=/*.bilibili.com/119.29.29.29
+
+server=/hdslb.com/119.29.29.29
+
+server=/*.163.com/119.29.29.29
+
+server=/*.126.com/119.29.29.29
+
+server=/*.126.net/119.29.29.29
+
+server=/*.127.net/119.29.29.29
+
+server=/*.netease.com/119.29.29.29
+
+server=/*.mi.com/119.29.29.29
+
+server=/*.xiaomi.com/119.29.29.29
+
+address=/mtalk.google.com/108.177.125.188
+
+# policy策略组
+
+#需要策略图标的在策略后加上：img-url=http://example.com/icon.png
+
+# 类型：静态(static)
+
+# 指向您手动选择的候选服务器。
+
+;static=policy-name-1, Sample-A, Sample-B, Sample-C, img-url=http://example.com/icon.png
+
+# 类型：可用(available)
+
+# 指向候选服务器的第一个可用服务器(当策略被触发且策略结果不可用时，将立即启动并发 url 延迟测试。
+
+# 如果当时没有网络请求接受策略，这意味着策略处于空闲状态，即使服务器关闭，测试也不会启动。那时，您可以通过手动启动测试来更新服务器状态，但是这没有任何意义)。
+
+;available=policy-name-2, Sample-A, Sample-B, Sample-C
+
+# 类型：负载均衡(round-robin)
+
+# 指向在候选服务器中指向下一个服务器以进行下一次连接。
+
+;round-robin=policy-name-3, Sample-A, Sample-B, Sample-C
+
+# 类型：延迟测试(url-latency-benchmark)
+
+# 策略指向具有最佳 URL 延迟(公差，单位毫秒)结果的服务器。
+
+# 当用户在 Quantumult X 中手动启动 URL 测试时，策略结果也会被更新。
+
+# 该类型的策略有一个名为 check-interval(秒) 的参数，如果此策略已经被任何请求激活，则将考虑该间隔。
+
+;url-latency-benchmark=policy-name-8, resource-tag-regex=^sample, server-tag-regex=^example, check-interval=600, tolerance=0
+
+# SSID
+
+# 策略根据网络环境的不同指向服务器。
+
+;ssid=policy-name-4, Sample-A, Sample-B, LINK_22E171:Sample-B, LINK_22E172:Sample-C
+
+[policy]
+
+#ssid=SSID,Proxy,Auto,ZZM-5G:Auto,ZZM:direct, img-url=https://raw.githubusercontent.com/zzm1908822163/Qure/master/IconSet/Color/SSID.png
+
+static=Country, Auto, HK, TW, JP, SG, US, proxy, img-url=https://raw.githubusercontent.com/zzm1908822163/Qure/master/IconSet/Color/Global.png
+
+url-latency-benchmark=Auto, resource-tag-regex=^, check-interval=600, tolerance=0, img-url=https://raw.githubusercontent.com/zzm1908822163/Qure/master/IconSet/Color/Auto.png
+
+static=Final, Auto, HK, TW, JP, SG, US, proxy, direct, img-url=https://raw.githubusercontent.com/zzm1908822163/Qure/master/IconSet/Color/Find_My.png
+
+static=Streaming, Auto, HK, TW, JP, SG, US, img-url=https://raw.githubusercontent.com/zzm1908822163/Qure/master/IconSet/Color/StreamingSE.png
+
+static=Apple, direct, US, img-url=https://raw.githubusercontent.com/zzm1908822163/Qure/master/IconSet/Color/Apple.png
+
+static=Bilibili, direct, HK, TW, img-url=https://raw.githubusercontent.com/zzm1908822163/mini/master/Color/Bili.png
+
+static=社交, Auto, HK, TW, JP, SG, US, proxy, img-url=https://raw.githubusercontent.com/zzm1908822163/Qure/master/IconSet/Color/Telegram.png
+
+static=PayPal, direct, US, img-url=https://raw.githubusercontent.com/zzm1908822163/Qure/master/IconSet/Color/PayPal.png
+
+url-latency-benchmark=HK, server-tag-regex=(?=.*(港|HK|(?i)Hong))^((?!(台|日|新|美|US|SG|JP|KR|TW)).)*$, check-interval=600, tolerance=0, img-url=https://raw.githubusercontent.com/zzm1908822163/Qure/master/IconSet/Color/Hong_Kong.png
+
+url-latency-benchmark=TW, server-tag-regex=(?=.*(台|TW|(?i)Taiwan))^((?!(港|日|韩|新|美)).)*$, check-interval=600, tolerance=0, img-url=https://raw.githubusercontent.com/zzm1908822163/Qure/master/IconSet/Color/Taiwan.png
+
+url-latency-benchmark=JP, server-tag-regex=(?=.*(日本|日|JP|(?i)Japan|东京))^((?!(港|台|新|美|US|SG|HK|TW)).)*$, check-interval=600, tolerance=0, img-url=https://raw.githubusercontent.com/zzm1908822163/Qure/master/IconSet/Color/Japan.png
+
+url-latency-benchmark=SG, server-tag-regex=(?=.*(新加坡|狮城|新|SG|(?i)SIN))^((?!(港|台|日|美|US|JP|HK|TW)).)*$, check-interval=600, tolerance=0, img-url=https://raw.githubusercontent.com/zzm1908822163/Qure/master/IconSet/Color/Singapore.png
+
+url-latency-benchmark=US, server-tag-regex=(?=.*(美|US|(?i)States|American))^((?!(港|台|日|新加坡|狮城|SG|JP|HK|TW)).)*$, check-interval=600, tolerance=0, img-url=https://raw.githubusercontent.com/zzm1908822163/Qure/master/IconSet/Color/United_States.png
+
+#服务器远程订阅
+
+[server_remote]
+
+#规则分流远程订阅
+
+#远程分流模块，可使用force-policy来强制使用策略偏好, 替换远程规则内所指定的策略组
+
+#同样的
+
+# update-interval 为更新时间参数，单位 秒, 默认更新时间为 24*60*60=86400 秒，也就是24小时.
+
+# opt-parser=true/false 用于控制是否对本订阅 开启资源解析器，不写或者 false 表示不启用解析器;
+
+#支持本地/iCloud规则文件，位于Quantumult X/Profiles路径下，filter.txt, tag=本地分流, enabled=false
+
+[filter_remote]
+
+https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/rule/Apple/Apple.list, tag=Apple.list, force-policy=Apple, update-interval=-1, opt-parser=false, enabled=true
+
+https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/rule/BiliBili/BiliBili.list, tag=Bilibili, force-policy=Bilibili, update-interval=-1, opt-parser=false, enabled=true
+
+https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/rule/Cydia/Cydia.list, tag=Cydia, force-policy=Auto, update-interval=-1, opt-parser=false, enabled=true
+
+https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/rule/Facebook/Facebook.list, tag=Facebook, force-policy=社交, update-interval=-1, opt-parser=false, enabled=true
+
+https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/rule/Game/Asphalt9.list, tag=Game, force-policy=direct, update-interval=-1, opt-parser=false, enabled=true
+
+https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/rule/GitHub/GitHub.list, tag=GitHub, force-policy=Auto, update-interval=-1, opt-parser=false, enabled=true
+
+https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/rule/PayPal/PayPal.list, tag=PayPal, force-policy=PayPal, update-interval=-1, opt-parser=false, enabled=true
+
+https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/rule/Telegram/Telegram.list, tag=Telegram, force-policy=社交, update-interval=-1, opt-parser=false, enabled=true
+
+https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/rule/Twitter/Twitter.list, tag=Twitter, force-policy=社交, update-interval=-1, opt-parser=false, enabled=true
+
+https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/rule/Apple/TestFlight.list, tag=Testflight, force-policy=Auto, update-interval=-1, opt-parser=false, enabled=true
+
+https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/rule/YouTube/YouTube.list, tag=YouTube, force-policy=Streaming, update-interval=-1, opt-parser=false, enabled=true
+
+#rewrite 复写远程订阅
+
+#远程复写模块，内包含主机名hostname以及复写rewrite规则
+
+# update-interval 为更新时间参数，单位 秒, 默认更新时间为 24*60*60=86400 秒，也就是24小时.
+
+# opt-parser=true/false 用于控制是否对本订阅 开启资源解析器，不写或者 false 表示不启用解析器;
+
+[rewrite_remote]
+
+https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/Rewrite/EmbyUnlock/EmbyUnlock.conf, tag=emby, update-interval=-1, opt-parser=false, enabled=true
+
+https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/Rewrite/BiliBili-Auto/BiliBili-Auto.conf, tag=bilibili, update-interval=-1, opt-parser=false, enabled=true
+
+https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/Rewrite/TestFlightDownload/TestFlightDownload.conf, tag=TestFlight区域限制解除, update-interval=-1, opt-parser=false, enabled=true
+
+# 本地服务器部分
+
+[server_local]
+
+#本地分流规则(对于完全相同的某条规则，本地的将优先生效)
+
+[filter_local]
+
+host-keyword, google, Auto
+
+host-suffix, ivapp.cn, Auto
+
+host-suffix, local, direct
+
+ip-cidr, 192.168.0.0/16, direct
+
+ip-cidr, 10.0.0.0/8, direct
+
+ip-cidr, 172.16.0.0/12, direct
+
+ip-cidr, 127.0.0.0/8, direct
+
+ip-cidr, 100.64.0.0/10, direct
+
+ip-cidr, 224.0.0.0/4, direct
+
+ip6-cidr, fe80::/10, direct
+
+ip-cidr, 203.107.1.1/24, reject
+
+geoip,cn,direct
+
+FINAL, Final
+
+#不在上述规则中(远程以及本地)的剩余请求，将走final 指定的节点/策略，这里即是 → Final, 请根据自己的需求来选择直连或节点、策略FINAL, Final
+
+#本地复写规则
+
+[rewrite_local]
+
+[task_local]
+
+0 8 * * * moji.js, tag=墨迹天气, enabled=true
+
+[http_backend]
+
+https://raw.githubusercontent.com/zzm1908822163/scripts/master/box/chavy.boxjs.js, tag=boxjs, path=^/, enabled=true
+
+[mitm]
+
+hostname = 
+
+passphrase = 
+
+p12 =
+
