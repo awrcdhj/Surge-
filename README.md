@@ -1,320 +1,889 @@
-[general]
+ * Combined by jsDelivr.
 
-# DNS 排除列表
+ * Do NOT use SRI with dynamically generated files! More information: https://www.jsdelivr.com/using-sri-with-dynamic-files
 
-# dns_exclusion_list 包含了禁用占位符 IP (240.*) 的域，不在 dns_exclusion_list 中的域都启用了占位符 IP，并打开了 resolve-on-remote 设置。
+ */
 
-dns_exclusion_list=*.cmpassport.com, *.jegotrip.com.cn, *.icitymobile.mobi, id6.me, *.pingan.com.cn
+/**
 
-#geo_location_checker用于节点页面的节点信息展示，可完整自定义展示内容与方式
+ * Skipped minification because the original files appears to be already minified.
 
-geo_location_checker=http://ip-api.com/json/?lang=zh-CN, https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/Script/IP_API.js
+ * Do NOT use SRI with dynamically generated files! More information: https://www.jsdelivr.com/using-sri-with-dynamic-files
 
-#资源解析器，可用于自定义各类远程资源的转换，如节点，规则 filter，复写 rewrite 等，url 地址可远程，可 本地/iCloud(Quantumult X/Scripts目录);
+ */
 
-resource_parser_url=https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/Script/resource-parser.js
+/* prebid-universal-creative v1.11.0
 
-# Quantumult 使用 HEAD 方法将 HTTP 请求发送到服务器检查 url 来测试代理的状态，结果应该是两个延迟，第一个是 TCP 与代理服务器的握手，第二个是 Quantumult 成功地从服务器检查 url 接收 HTTP 响应的总时间。闪电图标表示 TCP Fast Open 成功。如果 [server_local] 或 [server_remote] 中的服务器有自己的 server_check_url，则会用自己的 server_check_url 代替 [general] 中的 server_check_url。
+Updated : 2021-07-14 */
 
-# Quantumult 使用 HTTP HEAD 方法对测试网址 server_check_url 进行网页响应性测试(测试结果为通过该节点访问此网页获得 HTTP 响应所需要的时间)，来确认节点的可用性。
+!function(r){var n={};function o(t){if(n[t])return n[t].exports;var e=n[t]={i:t,l:!1,exports:{}};return r[t].call(e.exports,e,e.exports,o),e.l=!0,e.exports}o.m=r,o.c=n,o.d=function(t,e,r){o.o(t,e)||Object.defineProperty(t,e,{configurable:!1,enumerable:!0,get:r})},o.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return o.d(e,"a",e),e},o.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},o.p="",o(o.s=1)}([function(t,e,r){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.getEmptyIframe=function(t,e){var r=document.createElement("iframe");return r.setAttribute("frameborder",0),r.setAttribute("scrolling","no"),r.setAttribute("marginheight",0),r.setAttribute("marginwidth",0),r.setAttribute("TOPMARGIN",0),r.setAttribute("LEFTMARGIN",0),r.setAttribute("allowtransparency","true"),r.setAttribute("width",e),r.setAttribute("height",t),r},e.insertElement=function(t,e,r){var n;e=e||document,n=r?e.getElementsByTagName(r):e.getElementsByTagName("head");try{(n=n.length?n:e.getElementsByTagName("body")).length&&(n=n[0]).insertBefore(t,n.firstChild)}catch(t){}}},function(t,e,r){"use strict";var n=r(2),o=r(5);window.ucTag=window.ucTag||{};var i=(0,o.newEnvironment)(window),a=(0,n.newRenderingManager)(window,i);window.ucTag.renderAd=a.renderAd},function(t,e,r){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.newRenderingManager=function(d,s){function f(t){if(t){var e=t.split("x").map(Number);!function(n,o){if(s.isSafeFrame()){var i=d.innerWidth,a=d.innerHeight;i===n&&a===o||(d.$sf.ext.register(n,o,function(t){var e=n-i,r=o-a;d.$sf.ext.expand({r:e,b:r,push:!0})}),d.parent.postMessage({sentinel:"amp",type:"embed-size",width:n,height:o},"*"))}}(e[0],e[1])}else console.log("Targeting key hb_size not found to resize creative")}function n(t,e,r,n,o,i){var a=2<arguments.length&&void 0!==r?r:"",s=3<arguments.length?n:void 0,c=4<arguments.length?o:void 0,u=5<arguments.length?i:void 0,l="Prebid_";if(a.substr(0,l.length)===l)!function(t){var e=d.localStorage.getItem(t);h(!0)(e)}(a),f(s);else{var p="".concat(function(t,e){var r=void 0===e||""===e?v:e;return"https://".concat(void 0===t||""===t?g:t).concat(r)}(t,e),"?uuid=").concat(a);f(s),m.sendRequest(p,h(u,c))}}function h(u,l){return function(t){var e=function(t){var e;try{e=JSON.parse(t)}catch(t){console.log("Error parsing response from cache host: ".concat(t))}return e}(t),r=e.price||l,n=m.getCreativeCommentMarkup(e),o=e.width?e.width:e.w,i=e.height?e.height:e.h;if(e.wurl&&(0,m.triggerPixel)(decodeURIComponent(e.wurl)),e.adm){if(e.adm=r?e.adm.replace("${AUCTION_PRICE}",r):e.adm.replace("${AUCTION_PRICE}",""),n+=u?p(e.adm,o,i):e.adm,e.nurl&&(n+=m.createTrackPixelHtml(decodeURIComponent(e.nurl))),e.burl){var a=function(){m.triggerPixel(e.burl)};if(u)m.loadScript(d,"mraid.js",function(){!function(e){function r(t){0<t&&(mraid.removeEventListener("exposureChange",r),e())}function n(t){t&&(mraid.removeEventListener("viewableChange",n),e())}function o(){d.MRAID_ENV&&3<=parseFloat(d.MRAID_ENV.version)?mraid.addEventListener("exposureChange",r):d.MRAID_ENV&&parseFloat(d.MRAID_ENV.version)<3&&(mraid.isViewable()?e():mraid.addEventListener("viewableChange",n))}return!(!d.mraid||!d.MRAID_ENV)&&("loading"==mraid.getState()?mraid.addEventListener("ready",function t(){mraid.removeEventListener("ready",t),o()}):o(),!0)}(a)&&a()},a);else a()}m.writeAdHtml(n)}else if(e.nurl)if(u){n+=p(m.loadScript(d,e.nurl).outerHTML,o,i),m.writeAdHtml(n)}else{var s=e.nurl,c=m.getCreativeComment(e);y.insertElement(c,document,"body"),m.writeAdUrl(s,o,i)}}}function p(t,e,r){var n=m.getUUID();return'<div id="'.concat(n,'" style="border-style: none; position: absolute; width:100%; height:100%;">\n      <div id="').concat(n,'_inner" style="margin: 0 auto; width:').concat(e,"px; height:").concat(r,'px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">').concat(t,"</div>\n      </div>")}return{renderAd:function(t,e){var r=m.transformAuctionTargetingData(e);s.isMobileApp(r.env)?n(r.cacheHost,r.cachePath,r.uuid,r.size,r.hbPb,!0):s.isAmp(r.uuid)?n(r.cacheHost,r.cachePath,r.uuid,r.size,r.hbPb):s.canLocatePrebid()?function(t,e){for(var r=d,n=0;n<10;n++)if((r=r.parent).pbjs)try{r.pbjs.renderAd(t,e);break}catch(t){continue}}(t,r.adId):function(p,t,e){var r,n=1<arguments.length&&void 0!==t?t:"",o=2<arguments.length?e:void 0,i=d.location,a=m.parseUrl(o),f=a.protocol+"://"+a.host,s=n||d.location.hostname,c=i.protocol+"//"+s;function u(t){var e=t.message?"message":"data",r={};try{r=JSON.parse(t[e])}catch(t){return}var n=t.origin||t.originalEvent.origin;if(r.message&&"Prebid Response"===r.message&&f===n&&r.adId===p&&(r.ad||r.adUrl)){var o=d.document.body,i=r.ad,a=r.adUrl,s=r.width,c=r.height;if("video"===r.mediaType)console.log("Error trying to write ad.");else if(i){var u=y.getEmptyIframe(r.height,r.width);o.appendChild(u),u.contentDocument.open(),u.contentDocument.write(i),u.contentDocument.close()}else if(a){var l=y.getEmptyIframe(c,s);l.style.display="inline",l.style.overflow="hidden",l.src=a,y.insertElement(l,document,"body")}else console.log("Error trying to write ad. No ad for bid response id: ".concat(id))}}d.addEventListener("message",u,!1),r=JSON.stringify({message:"Prebid Request",adId:p,adServerDomain:c}),d.parent.postMessage(r,f)}(r.adId,r.adServerDomain,r.pubUrl)}}};var m=n(r(3)),y=n(r(0));function a(){if("function"!=typeof WeakMap)return null;var t=new WeakMap;return a=function(){return t},t}function n(t){if(t&&t.__esModule)return t;var e=a();if(e&&e.has(t))return e.get(t);var r={};if(null!=t){var n=Object.defineProperty&&Object.getOwnPropertyDescriptor;for(var o in t)if(Object.prototype.hasOwnProperty.call(t,o)){var i=n?Object.getOwnPropertyDescriptor(t,o):null;i&&(i.get||i.set)?Object.defineProperty(r,o,i):r[o]=t[o]}}return r.default=t,e&&e.set(t,r),r}var g="prebid.adnxs.com",v="/pbc/v1/cache"},function(t,n,e){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.triggerPixel=function(t,e){var r=new Image;e&&"function"==typeof e&&(r.addEventListener("load",e),r.addEventListener("error",e));r.src=t},n.createTrackPixelHtml=function(t){if(!t)return"";var e=encodeURI(t);return'<div style="position:absolute;left:0px;top:0px;visibility:hidden;"><img src="'.concat(e,'"></div>')},n.writeAdUrl=function(t,e,r){var n=o.getEmptyIframe(r,e);n.src=t,document.body.appendChild(n)},n.writeAdHtml=function(t){r(document.body,t)},n.sendRequest=function(t,e){var r=new XMLHttpRequest;r.addEventListener("load",function(){e(r.responseText)}),r.open("GET",t),r.send()},n.getUUID=function(){var r=(new Date).getTime();return"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,function(t){var e=(r+16*Math.random())%16|0;return r=Math.floor(r/16),("x"===t?e:3&e|8).toString(16)})},n.loadScript=function(t,e,r,n){var o=t.document,i=o.createElement("script");i.type="text/javascript",r&&"function"==typeof r&&(i.readyState?i.onreadystatechange=function(){"loaded"!==i.readyState&&"complete"!==i.readyState||(i.onreadystatechange=null,r())}:i.onload=function(){r()});n&&"function"==typeof n&&(i.onerror=function(){n()});i.src=e;var a=o.getElementsByTagName("head");(a=a.length?a:o.getElementsByTagName("body")).length&&(a=a[0]).insertBefore(i,a.firstChild);return i},n.getCreativeComment=function(t){return document.createComment("Creative ".concat(t.crid," served by Prebid.js Header Bidding"))},n.getCreativeCommentMarkup=function(t){var e=n.getCreativeComment(t),r=document.createElement("div");return r.appendChild(e),r.innerHTML},n.transformAuctionTargetingData=function(e){var r={hb_adid:"adId",hb_cache_host:"cacheHost",hb_cache_path:"cachePath",hb_cache_id:"uuid",hb_format:"mediaType",hb_env:"env",hb_size:"size",hb_pb:"hbPb"};function t(t){return!(!e[t]||!(function(t){return i(t,"Object")}(e[t])&&0<Object.keys(e[t]).length||s(e[t])&&""!==e[t]))}var n={},o={};t("targetingMap")?o=function(e){var r={};return Object.keys(e).forEach(function(t){Array.isArray(e[t])&&0<e[t].length&&(r[t]=e[t][0])}),r}(e.targetingMap):t("targetingKeywords")&&(o=function(t){var o={},e=t.split(",");return 0<e.length&&e.forEach(function(t){var e=t.split(":");if(2===e.length){var r=e[0],n=e[1];o[r]=n}}),o}(e.targetingKeywords));return function(e){Object.keys(e).forEach(function(t){n[r[t]||t]=e[t]})}(o),Object.keys(e).forEach(function(t){"targetingMap"!==t&&"targetingKeywords"!==t&&s(e[t])&&""!==e[t]&&(n[t]=e[t])}),n},n.parseUrl=function(t){var e=document.createElement("a");return e.href=decodeURIComponent(t),{href:e.href,protocol:(e.protocol||"").replace(/:$/,""),hostname:e.hostname,port:+e.port,pathname:e.pathname.replace(/^(?!\/)/,"/"),hash:(e.hash||"").replace(/^#/,""),host:(e.host||window.location.host).replace(/:(443|80)$/,"")}};var o=function(t){if(t&&t.__esModule)return t;var e=a();if(e&&e.has(t))return e.get(t);var r={};if(null!=t){var n=Object.defineProperty&&Object.getOwnPropertyDescriptor;for(var o in t)if(Object.prototype.hasOwnProperty.call(t,o)){var i=n?Object.getOwnPropertyDescriptor(t,o):null;i&&(i.get||i.set)?Object.defineProperty(r,o,i):r[o]=t[o]}}r.default=t,e&&e.set(t,r);return r}(e(0));function a(){if("function"!=typeof WeakMap)return null;var t=new WeakMap;return a=function(){return t},t}var r=e(4);function i(t,e){return Object.prototype.toString.call(t)==="[object "+e+"]"}function s(t){return i(t,"String")}},function(t,e,r){var n;n=function(){return o={},r.m=n=[function(t,e,r){"use strict";var n,o=r(1),i=(n=o)&&n.__esModule?n:{default:n};t.exports=i.default},function(t,e,r){"use strict";e.__esModule=!0;var s=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var r=arguments[e];for(var n in r)Object.prototype.hasOwnProperty.call(r,n)&&(t[n]=r[n])}return t};e.default=h;var n,o=r(2),c=(n=o)&&n.__esModule?n:{default:n},i=function(t){{if(t&&t.__esModule)return t;var e={};if(null!=t)for(var r in t)Object.prototype.hasOwnProperty.call(t,r)&&(e[r]=t[r]);return e.default=t,e}}(r(4));function u(){}var a={afterAsync:u,afterDequeue:u,afterStreamStart:u,afterWrite:u,autoFix:!0,beforeEnqueue:u,beforeWriteToken:function(t){return t},beforeWrite:function(t){return t},done:u,error:function(t){throw new Error(t.msg)},releaseAsync:!1},l=0,p=[],f=null;function d(){var t=p.shift();if(t){var e=i.last(t);e.afterDequeue(),t.stream=function(t,e,n){(f=new c.default(t,n)).id=l++,f.name=n.name||f.id,h.streams[f.name]=f;var r=t.ownerDocument,o={close:r.close,open:r.open,write:r.write,writeln:r.writeln};function i(t){t=n.beforeWrite(t),f.write(t),n.afterWrite(t)}s(r,{close:u,open:u,write:function(){for(var t=arguments.length,e=Array(t),r=0;r<t;r++)e[r]=arguments[r];return i(e.join(""))},writeln:function(){for(var t=arguments.length,e=Array(t),r=0;r<t;r++)e[r]=arguments[r];return i(e.join("")+"\n")}});var a=f.win.onerror||u;return f.win.onerror=function(t,e,r){n.error({msg:t+" - "+e+": "+r}),a.apply(f.win,[t,e,r])},f.write(e,function(){s(r,o),f.win.onerror=a,n.done(),f=null,d()}),f}.apply(void 0,t),e.afterStreamStart()}}function h(t,e,r){if(i.isFunction(r))r={done:r};else if("clear"===r)return p=[],f=null,void(l=0);r=i.defaults(r,a);var n=[t=/^#/.test(t)?window.document.getElementById(t.substr(1)):t.jquery?t[0]:t,e,r];return t.postscribe={cancel:function(){n.stream?n.stream.abort():n[1]=u}},r.beforeEnqueue(n),p.push(n),f||d(),t.postscribe}s(h,{streams:{},queue:p,WriteStream:c.default})},function(t,e,r){"use strict";e.__esModule=!0;var n,s=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var r=arguments[e];for(var n in r)Object.prototype.hasOwnProperty.call(r,n)&&(t[n]=r[n])}return t},o=r(3),i=(n=o)&&n.__esModule?n:{default:n},a=function(t){{if(t&&t.__esModule)return t;var e={};if(null!=t)for(var r in t)Object.prototype.hasOwnProperty.call(t,r)&&(e[r]=t[r]);return e.default=t,e}}(r(4));var l="data-ps-",p="ps-style",f="ps-script";function c(t,e){var r=l+e,n=t.getAttribute(r);return a.existy(n)?String(n):n}function u(t,e,r){var n=2<arguments.length&&void 0!==r?r:null,o=l+e;a.existy(n)&&""!==n?t.setAttribute(o,n):t.removeAttribute(o)}var d=(h.prototype.write=function(){var t;for((t=this.writeQueue).push.apply(t,arguments);!this.deferredRemote&&this.writeQueue.length;){var e=this.writeQueue.shift();a.isFunction(e)?this._callFunction(e):this._writeImpl(e)}},h.prototype._callFunction=function(t){var e={type:"function",value:t.name||t.toString()};this._onScriptStart(e),t.call(this.win,this.doc),this._onScriptDone(e)},h.prototype._writeImpl=function(t){this.parser.append(t);for(var e=void 0,r=void 0,n=void 0,o=[];(e=this.parser.readToken())&&!(r=a.isScript(e))&&!(n=a.isStyle(e));)(e=this.options.beforeWriteToken(e))&&o.push(e);0<o.length&&this._writeStaticTokens(o),r&&this._handleScriptToken(e),n&&this._handleStyleToken(e)},h.prototype._writeStaticTokens=function(t){var e=this._buildChunk(t);return e.actual?(e.html=this.proxyHistory+e.actual,this.proxyHistory+=e.proxy,this.proxyRoot.innerHTML=e.html,this._walkChunk(),e):null},h.prototype._buildChunk=function(t){for(var e=this.actuals.length,r=[],n=[],o=[],i=t.length,a=0;a<i;a++){var s=t[a],c=s.toString();if(r.push(c),s.attrs){if(!/^noscript$/i.test(s.tagName)){var u=e++;n.push(c.replace(/(\/?>)/," "+l+"id="+u+" $1")),s.attrs.id!==f&&s.attrs.id!==p&&o.push("atomicTag"===s.type?"":"<"+s.tagName+" "+l+"proxyof="+u+(s.unary?" />":">"))}}else n.push(c),o.push("endTag"===s.type?c:"")}return{tokens:t,raw:r.join(""),actual:n.join(""),proxy:o.join("")}},h.prototype._walkChunk=function(){for(var t=void 0,e=[this.proxyRoot];a.existy(t=e.shift());){var r=1===t.nodeType;if(!r||!c(t,"proxyof")){r&&u(this.actuals[c(t,"id")]=t,"id");var n=t.parentNode&&c(t.parentNode,"proxyof");n&&this.actuals[n].appendChild(t)}e.unshift.apply(e,a.toArray(t.childNodes))}},h.prototype._handleScriptToken=function(t){var e=this,r=this.parser.clear();r&&this.writeQueue.unshift(r),t.src=t.attrs.src||t.attrs.SRC,(t=this.options.beforeWriteToken(t))&&(t.src&&this.scriptStack.length?this.deferredRemote=t:this._onScriptStart(t),this._writeScriptToken(t,function(){e._onScriptDone(t)}))},h.prototype._handleStyleToken=function(t){var e=this.parser.clear();e&&this.writeQueue.unshift(e),t.type=t.attrs.type||t.attrs.TYPE||"text/css",(t=this.options.beforeWriteToken(t))&&this._writeStyleToken(t),e&&this.write()},h.prototype._writeStyleToken=function(t){var e=this._buildStyle(t);this._insertCursor(e,p),t.content&&(e.styleSheet&&!e.sheet?e.styleSheet.cssText=t.content:e.appendChild(this.doc.createTextNode(t.content)))},h.prototype._buildStyle=function(t){var r=this.doc.createElement(t.tagName);return r.setAttribute("type",t.type),a.eachKey(t.attrs,function(t,e){r.setAttribute(t,e)}),r},h.prototype._insertCursor=function(t,e){this._writeImpl('<span id="'+e+'"/>');var r=this.doc.getElementById(e);r&&r.parentNode.replaceChild(t,r)},h.prototype._onScriptStart=function(t){t.outerWrites=this.writeQueue,this.writeQueue=[],this.scriptStack.unshift(t)},h.prototype._onScriptDone=function(t){t===this.scriptStack[0]?(this.scriptStack.shift(),this.write.apply(this,t.outerWrites),!this.scriptStack.length&&this.deferredRemote&&(this._onScriptStart(this.deferredRemote),this.deferredRemote=null)):this.options.error({msg:"Bad script nesting or script finished twice"})},h.prototype._writeScriptToken=function(t,e){var r=this._buildScript(t),n=this._shouldRelease(r),o=this.options.afterAsync;t.src&&(r.src=t.src,this._scriptLoadHandler(r,n?o:function(){e(),o()}));try{this._insertCursor(r,f),r.src&&!n||e()}catch(t){this.options.error(t),e()}},h.prototype._buildScript=function(t){var r=this.doc.createElement(t.tagName);return a.eachKey(t.attrs,function(t,e){r.setAttribute(t,e)}),t.content&&(r.text=t.content),r},h.prototype._scriptLoadHandler=function(e,r){function n(){e=e.onload=e.onreadystatechange=e.onerror=null}var o=this.options.error;function t(){n(),null!=r&&r(),r=null}function i(t){n(),o(t),null!=r&&r(),r=null}function a(t,e){var r=t["on"+e];null!=r&&(t["_on"+e]=r)}a(e,"load"),a(e,"error"),s(e,{onload:function(){if(e._onload)try{e._onload.apply(this,Array.prototype.slice.call(arguments,0))}catch(t){i({msg:"onload handler failed "+t+" @ "+e.src})}t()},onerror:function(){if(e._onerror)try{e._onerror.apply(this,Array.prototype.slice.call(arguments,0))}catch(t){return void i({msg:"onerror handler failed "+t+" @ "+e.src})}i({msg:"remote script failed "+e.src})},onreadystatechange:function(){/^(loaded|complete)$/.test(e.readyState)&&t()}})},h.prototype._shouldRelease=function(t){return!/^script$/i.test(t.nodeName)||!!(this.options.releaseAsync&&t.src&&t.hasAttribute("async"))},h);function h(t){var e=1<arguments.length&&void 0!==arguments[1]?arguments[1]:{};!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,h),this.root=t,this.options=e,this.doc=t.ownerDocument,this.win=this.doc.defaultView||this.doc.parentWindow,this.parser=new i.default("",{autoFix:e.autoFix}),this.actuals=[t],this.proxyHistory="",this.proxyRoot=this.doc.createElement(t.nodeName),this.scriptStack=[],this.writeQueue=[],u(this.proxyRoot,"proxyof",0)}e.default=d},function(t,e,r){var n;n=function(){return o={},r.m=n=[function(t,e,r){"use strict";var n,o=r(1),i=(n=o)&&n.__esModule?n:{default:n};t.exports=i.default},function(t,e,r){"use strict";e.__esModule=!0;var n,a=u(r(2)),o=u(r(3)),i=r(6),s=(n=i)&&n.__esModule?n:{default:n},c=r(5);function u(t){if(t&&t.__esModule)return t;var e={};if(null!=t)for(var r in t)Object.prototype.hasOwnProperty.call(t,r)&&(e[r]=t[r]);return e.default=t,e}var l={comment:/^<!--/,endTag:/^<\//,atomicTag:/^<\s*(script|style|noscript|iframe|textarea)[\s\/>]/i,startTag:/^</,chars:/^[^<]/},p=(f.prototype.append=function(t){this.stream+=t},f.prototype.prepend=function(t){this.stream=t+this.stream},f.prototype._readTokenImpl=function(){var t=this._peekTokenImpl();if(t)return this.stream=this.stream.slice(t.length),t},f.prototype._peekTokenImpl=function(){for(var t in l)if(l.hasOwnProperty(t)&&l[t].test(this.stream)){var e=o[t](this.stream);if(e)return"startTag"===e.type&&/script|style/i.test(e.tagName)?null:(e.text=this.stream.substr(0,e.length),e)}},f.prototype.peekToken=function(){return this._peekToken()},f.prototype.readToken=function(){return this._readToken()},f.prototype.readTokens=function(t){for(var e=void 0;e=this.readToken();)if(t[e.type]&&!1===t[e.type](e))return},f.prototype.clear=function(){var t=this.stream;return this.stream="",t},f.prototype.rest=function(){return this.stream},f);function f(){var t=this,e=0<arguments.length&&void 0!==arguments[0]?arguments[0]:"",r=1<arguments.length&&void 0!==arguments[1]?arguments[1]:{};!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,f),this.stream=e;var n=!1,o={};for(var i in a)a.hasOwnProperty(i)&&(r.autoFix&&(o[i+"Fix"]=!0),n=n||o[i+"Fix"]);n?(this._readToken=(0,s.default)(this,o,function(){return t._readTokenImpl()}),this._peekToken=(0,s.default)(this,o,function(){return t._peekTokenImpl()})):(this._readToken=this._readTokenImpl,this._peekToken=this._peekTokenImpl)}for(var d in(e.default=p).tokenToString=function(t){return t.toString()},p.escapeAttributes=function(t){var e={};for(var r in t)t.hasOwnProperty(r)&&(e[r]=(0,c.escapeQuotes)(t[r],null));return e},p.supports=a)a.hasOwnProperty(d)&&(p.browserHasFlaw=p.browserHasFlaw||!a[d]&&d)},function(t,e){"use strict";var r=!(e.__esModule=!0),n=!1,o=window.document.createElement("div");try{var i="<P><I></P></I>";o.innerHTML=i,e.tagSoup=r=o.innerHTML!==i}catch(t){e.tagSoup=r=!1}try{o.innerHTML="<P><i><P></P></i></P>",e.selfClose=n=2===o.childNodes.length}catch(t){e.selfClose=n=!1}o=null,e.tagSoup=r,e.selfClose=n},function(t,e,r){"use strict";e.__esModule=!0;var a="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t};e.comment=function(t){var e=t.indexOf("--\x3e");if(0<=e)return new s.CommentToken(t.substr(4,e-1),e+3)},e.chars=function(t){var e=t.indexOf("<");return new s.CharsToken(0<=e?e:t.length)},e.startTag=o,e.atomicTag=function(t){var e=o(t);if(e){var r=t.slice(e.length);if(r.match(new RegExp("</\\s*"+e.tagName+"\\s*>","i"))){var n=r.match(new RegExp("([\\s\\S]*?)</\\s*"+e.tagName+"\\s*>","i"));if(n)return new s.AtomicTagToken(e.tagName,n[0].length+e.length,e.attrs,e.booleanAttrs,n[1])}}},e.endTag=function(t){var e=t.match(c.endTag);if(e)return new s.EndTagToken(e[1],e[0].length)};var s=r(4),c={startTag:/^<([\-A-Za-z0-9_]+)((?:\s+[\w\-]+(?:\s*=?\s*(?:(?:"[^"]*")|(?:'[^']*')|[^>\s]+))?)*)\s*(\/?)>/,endTag:/^<\/([\-A-Za-z0-9_]+)[^>]*>/,attr:/(?:([\-A-Za-z0-9_]+)\s*=\s*(?:(?:"((?:\\.|[^"])*)")|(?:'((?:\\.|[^'])*)')|([^>\s]+)))|(?:([\-A-Za-z0-9_]+)(\s|$)+)/g,fillAttr:/^(checked|compact|declare|defer|disabled|ismap|multiple|nohref|noresize|noshade|nowrap|readonly|selected)$/i};function o(t){var r,n,o;if(-1!==t.indexOf(">")){var e=t.match(c.startTag);if(e){var i=(r={},n={},o=e[2],e[2].replace(c.attr,function(t,e){arguments[2]||arguments[3]||arguments[4]||arguments[5]?arguments[5]?(r[arguments[5]]="",n[arguments[5]]=!0):r[e]=arguments[2]||arguments[3]||arguments[4]||c.fillAttr.test(e)&&e||"":r[e]="",o=o.replace(t,"")}),{v:new s.StartTagToken(e[1],e[0].length,r,n,!!e[3],o.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,""))});if("object"===(void 0===i?"undefined":a(i)))return i.v}}}},function(t,e,r){"use strict";e.__esModule=!0,e.EndTagToken=e.AtomicTagToken=e.StartTagToken=e.TagToken=e.CharsToken=e.CommentToken=e.Token=void 0;var a=r(5);function s(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}e.Token=function t(e,r){s(this,t),this.type=e,this.length=r,this.text=""},e.CommentToken=(n.prototype.toString=function(){return"\x3c!--"+this.content},n);function n(t,e){s(this,n),this.type="comment",this.length=e||(t?t.length:0),this.text="",this.content=t}e.CharsToken=(o.prototype.toString=function(){return this.text},o);function o(t){s(this,o),this.type="chars",this.length=t,this.text=""}var i=e.TagToken=(c.formatTag=function(t,e){var r=1<arguments.length&&void 0!==e?e:null,n="<"+t.tagName;for(var o in t.attrs)if(t.attrs.hasOwnProperty(o)){n+=" "+o;var i=t.attrs[o];void 0!==t.booleanAttrs&&void 0!==t.booleanAttrs[o]||(n+='="'+(0,a.escapeQuotes)(i)+'"')}return t.rest&&(n+=" "+t.rest),t.unary&&!t.html5Unary?n+="/>":n+=">",null!=r&&(n+=r+"</"+t.tagName+">"),n},c);function c(t,e,r,n,o){s(this,c),this.type=t,this.length=r,this.text="",this.tagName=e,this.attrs=n,this.booleanAttrs=o,this.unary=!1,this.html5Unary=!1}e.StartTagToken=(u.prototype.toString=function(){return i.formatTag(this)},u);function u(t,e,r,n,o,i){s(this,u),this.type="startTag",this.length=e,this.text="",this.tagName=t,this.attrs=r,this.booleanAttrs=n,this.html5Unary=!1,this.unary=o,this.rest=i}e.AtomicTagToken=(l.prototype.toString=function(){return i.formatTag(this,this.content)},l);function l(t,e,r,n,o){s(this,l),this.type="atomicTag",this.length=e,this.text="",this.tagName=t,this.attrs=r,this.booleanAttrs=n,this.unary=!1,this.html5Unary=!1,this.content=o}e.EndTagToken=(p.prototype.toString=function(){return"</"+this.tagName+">"},p);function p(t,e){s(this,p),this.type="endTag",this.length=e,this.text="",this.tagName=t}},function(t,e){"use strict";e.__esModule=!0,e.escapeQuotes=function(t){var e=1<arguments.length&&void 0!==arguments[1]?arguments[1]:"";return t?t.replace(/([^"]*)"/g,function(t,e){return/\\/.test(e)?e+'"':e+'\\"'}):e}},function(t,e){"use strict";e.__esModule=!0,e.default=function(r,n,e){var o=function(){var t=[];return t.last=function(){return this[this.length-1]},t.lastTagNameEq=function(t){var e=this.last();return e&&e.tagName&&e.tagName.toUpperCase()===t.toUpperCase()},t.containsTagName=function(t){for(var e,r=0;e=this[r];r++)if(e.tagName===t)return!0;return!1},t}(),i={startTag:function(t){var e=t.tagName;"TR"===e.toUpperCase()&&o.lastTagNameEq("TABLE")?(r.prepend("<TBODY>"),a()):n.selfCloseFix&&s.test(e)&&o.containsTagName(e)?o.lastTagNameEq(e)?u(r,o):(r.prepend("</"+t.tagName+">"),a()):t.unary||o.push(t)},endTag:function(t){o.last()?n.tagSoupFix&&!o.lastTagNameEq(t.tagName)?u(r,o):o.pop():n.tagSoupFix&&(e(),a())}};function a(){var t=function(t,e){var r=t.stream,n=c(e());return t.stream=r,n}(r,e);t&&i[t.type]&&i[t.type](t)}return function(){return a(),c(e())}};var r=/^(AREA|BASE|BASEFONT|BR|COL|FRAME|HR|IMG|INPUT|ISINDEX|LINK|META|PARAM|EMBED)$/i,s=/^(COLGROUP|DD|DT|LI|OPTIONS|P|TD|TFOOT|TH|THEAD|TR)$/i;function c(t){return t&&"startTag"===t.type&&(t.unary=r.test(t.tagName)||t.unary,t.html5Unary=!/\/>$/.test(t.text)),t}function u(t,e){var r=e.pop();t.prepend("</"+r.tagName+">")}}],r.c=o,r.p="",r(0);function r(t){if(o[t])return o[t].exports;var e=o[t]={exports:{},id:t,loaded:!1};return n[t].call(e.exports,e,e.exports,r),e.loaded=!0,e.exports}var n,o},t.exports=n()},function(t,e){"use strict";e.__esModule=!0;var n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t};function o(t){return null!=t}function i(t,e,r){var n=void 0,o=t&&t.length||0;for(n=0;n<o;n++)e.call(r,t[n],n)}function a(t,e,r){for(var n in t)t.hasOwnProperty(n)&&e.call(r,n,t[n])}function r(t,e){return!(!t||"startTag"!==t.type&&"atomicTag"!==t.type||!("tagName"in t))&&!!~t.tagName.toLowerCase().indexOf(e)}e.existy=o,e.isFunction=function(t){return"function"==typeof t},e.each=i,e.eachKey=a,e.defaults=function(r,t){return r=r||{},a(t,function(t,e){o(r[t])||(r[t]=e)}),r},e.toArray=function(r){try{return Array.prototype.slice.call(r)}catch(t){var e=function(){var e=[];return i(r,function(t){e.push(t)}),{v:e}}();if("object"===(void 0===e?"undefined":n(e)))return e.v}},e.last=function(t){return t[t.length-1]},e.isTag=r,e.isScript=function(t){return r(t,"script")},e.isStyle=function(t){return r(t,"style")}}],r.c=o,r.p="",r(0);function r(t){if(o[t])return o[t].exports;var e=o[t]={exports:{},id:t,loaded:!1};return n[t].call(e.exports,e,e.exports,r),e.loaded=!0,e.exports}var n,o},t.exports=n()},function(t,e,r){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.newEnvironment=function(r){function e(){return r.top!==r&&!function(t){try{return t.top.location.toString(),!0}catch(t){return!1}}(r)}return{isMobileApp:function(t){return t&&"mobile-app"===t},isCrossDomain:e,isSafeFrame:function(){return!(!r.$sf||!r.$sf.ext)},isAmp:function(t){return"string"==typeof t&&""!==t&&e()},canLocatePrebid:function(){for(var t=!1,e=r;!t;){try{if(e.pbjs){t=!0;break}}catch(t){}if(e===window.top)break;e=e.parent}return t}}}}]);;
 
-# Quantumult 界面中的延迟测试方式均为网页响应性测试，显示的最终延迟均为通过对应节点访问测试网页获得 HTTP 响应所需要时间。
+'use strict';
 
-# 由于 Trojan 协议为无响应校验协议，使得 HTTP 检测方式即使获得了 HTTP 响应，也不代表节点一定可用。
+const _ = require('lodash');
 
-server_check_url=http://cp.cloudflare.com/generate_204
+const gulp = require('gulp');
 
-# filter - 规则分流，all_proxy - 全部代理，all_direct - 全部直连
+const argv = require('yargs').argv;
 
-# 示例意思：[蜂窝数据],[Wi-Fi],[SSID]
+const opens = require('opn');
 
-# 下列示例的意思为：在蜂窝数据使用规则分流(第一个 filter)，在 Wi-Fi 使用规则分流(第二个 filter)，在 SSID 为 LINK_22E171 的 Wi-Fi 使用全部代理，，在 SSID 为 LINK_22E172 的 Wi-Fi 使用全部直连
+const header = require('gulp-header');
 
-# Rewrite 及 Task 模块始终生效
+const connect = require('gulp-connect');
 
-;running_mode_trigger=filter, filter, wifi1:all_direct, wifi2: all_direct
+const creative = require('./package.json');
 
-#ssid_suspended_list，让 Quantumult X 在特定 Wi-Fi 网络下暂停工作(仅 task 模块会继续工作)，多个Wi-Fi用“,”连接
+const uglify = require('gulp-uglify');
 
-;ssid_suspended_list=ZZM-5G
+const gulpClean = require('gulp-clean');
 
-# Quantumult 将不会处理到 excluded_routes 的流量。修改后最好重新启动您的设备。
+const webpackStream = require('webpack-stream');
 
-;excluded_routes=192.168.0.0/16, 172.16.0.0/12, 100.64.0.0/10, 10.0.0.0/8
+const webpackConfig = require('./webpack.conf');
 
-;Hearthstone: 24.105.30.129/32, 185.60.112.157/32, 185.60.112.158/32, 182.162.132.1/32
+const inject = require('gulp-inject');
 
-excluded_routes=239.255.255.250/32, 24.105.30.129/32, 185.60.112.157/32, 185.60.112.158/32, 182.162.132.1/32
+const rename = require('gulp-rename');
 
-# 参数 udp_whitelist 从 IP 层控制 UDP 数据是否需要舍弃；如舍弃，则该 UDP 请求不会进入规则模块以及策略模块，TCP/UDP 请求记录中也不会有相应的条目，但仍可在日志中查询到相关信息（日志等级 debug）。
+const KarmaServer = require('karma').Server;
 
-# 该参数控制的是流入 Quantumult X Tunnel 的请求，并非 Quantumult X Tunnel 发出的请求，即不会作用于节点所使用的 UDP 目标端口。
+const karmaConfMaker = require('./karma.conf.maker');
 
-udp_whitelist=53, 123, 1900, 80-443
+const execa = require('execa');
 
-# 说明：参数 fallback_udp_policy 的值仅支持末端策略（末端策略为经由规则模块和策略模块后所命中的策略，例如：direct、reject 以及节点；不支持内置策略 proxy 以及其它自定义策略）。默认为 reject。
+const path = require('path');
 
-# 当 UDP 请求经过规则模块以及策略模块后所命中的节点为 Quantumult X 所不支持 UDP 转发的节点（如：VMess、trojan），或支持 UDP 转发但未注明 udp-relay=true 的（例如：SS/SSR 且与服务器是否真实开启 UDP 转发无关），则 fallback_udp_policy 会被使用。
+const dateString = 'Updated : ' + (new Date()).toISOString().substring(0, 10);
 
-# 注意：如果您需要调整该参数的值为 direct，请务必清楚了解同一目标主机名 TCP 请求与 UDP 请求的源地址不同所造成的隐私及安全风险。
+const banner = '/* <%= creative.name %> v<%= creative.version %>\n' + dateString + ' */\n';
 
-fallback_udp_policy=direct
+const port = 9990;
 
-;icmp_auto_reply=true
+function clean() {
 
-[dns]
+  return gulp.src(['dist/', 'build/'], {
 
-# 从当前网络（系统）获取的 DNS 服务器将始终用于更好的性能（您可以使用“no-system”禁用此功能，但您至少应该添加一个自定义的 DNS 服务器，例如“server=223.5.5.5” ）。
+    read: false,
 
-# 当设置no-ipv6时，Quanumult X Tunnel的DNS模块会直接让AAAA查询失败，但仍然允许来自IPv6 DNS服务器的A查询。
+    allowEmpty: true
 
-# 查询的结果只会用于评估过滤器或通过直接策略连接，通过服务器连接时不会使用结果并且Quantumult永远不会知道相关域的目标IP。
+  })
 
-# 设置 doh-server 后，所有其他常规（没有与之相关的特定域）服务器将被忽略。
+    .pipe(gulpClean());
 
-# 当设置了多个 doh-server(s) 时，只会使用第一个。
+}
 
-# 当使用的 doh-server 不是基于 HTTP/2 时，DoH 将被暂时禁用，常规服务器将被使用，直到下一次 VPN 连接开始。
+function buildDev() {
 
-;doh-server=https://dns.alidns.com/dns-query
+  return gulp.src(['src/creative.js'])
 
-;doh-server=https://223.6.6.6/dns-query
+    .pipe(webpackStream(webpackConfig))
 
-# 此处不允许专门为域直接设置127.0.0.1。如果您希望某个域（例如：example.com）为 127.0.0.1，只需在“filter_local”部分添加“host、example.com、reject”即可。拒绝操作将向查询返回带有 127.0.0.1 的 DNS 响应。
+    .pipe(gulp.dest('build'));
 
-no-ipv6
+}
 
-#指定的 dns服务器
+function buildNativeDev() {
 
-server=119.29.29.29:53
+  var cloned = _.cloneDeep(webpackConfig);
 
-server=114.114.114.114
+  cloned.output.filename = 'native-trk.js';
 
-;server=119.28.28.28
+  return gulp.src(['src/nativeTrackers.js'])
 
-;server=223.5.5.5
+    .pipe(webpackStream(cloned))
 
-;server=1.2.4.8
+    .pipe(gulp.dest('build'));
 
-#指定的 网址dns
+}
 
-server=/*.taobao.com/223.5.5.5
+function buildNativeRenderDev() {
 
-server=/*.tmall.com/223.5.5.5
+  var cloned = _.cloneDeep(webpackConfig);
 
-server=/*.alipay.com/223.5.5.5
+  cloned.output.filename = 'native-render.js';
 
-server=/*.alicdn.com/223.5.5.5
+  return gulp.src(['src/nativeRender.js'])
 
-server=/*.aliyun.com/223.5.5.5
+    .pipe(webpackStream(cloned))
 
-server=/*.jd.com/119.28.28.28
+    .pipe(gulp.dest('build'));
 
-server=/*.qq.com/119.28.28.28
+}
 
-server=/*.tencent.com/119.28.28.28
+function buildCookieSync() {
 
-server=/*.weixin.com/119.28.28.28
+  let cloned = _.cloneDeep(webpackConfig);
 
-server=/*.bilibili.com/119.29.29.29
+  delete cloned.devtool;
 
-server=/hdslb.com/119.29.29.29
+  let target = gulp.src('resources/load-cookie.html');
 
-server=/*.163.com/119.29.29.29
+  let sources = gulp.src(['src/cookieSync.js'])
 
-server=/*.126.com/119.29.29.29
+    .pipe(webpackStream(cloned))
 
-server=/*.126.net/119.29.29.29
+    .pipe(uglify());
 
-server=/*.127.net/119.29.29.29
+  return target.pipe(inject(sources, {
 
-server=/*.netease.com/119.29.29.29
+    starttag: '// cookie-sync start',
 
-server=/*.mi.com/119.29.29.29
+    endtag: '// end',
 
-server=/*.xiaomi.com/119.29.29.29
+    transform: function (filePath, file) {
 
-address=/mtalk.google.com/108.177.125.188
+      return file.contents.toString('utf8')
 
-# policy策略组
+    }
 
-#需要策略图标的在策略后加上：img-url=http://example.com/icon.png
+  }))
 
-# 类型：静态(static)
+    .pipe(gulp.dest('dist'));
 
-# 指向您手动选择的候选服务器。
+}
 
-;static=policy-name-1, Sample-A, Sample-B, Sample-C, img-url=http://example.com/icon.png
+function buildCookieSyncWithConsent() {
 
-# 类型：可用(available)
+  let cloned = _.cloneDeep(webpackConfig);
 
-# 指向候选服务器的第一个可用服务器(当策略被触发且策略结果不可用时，将立即启动并发 url 延迟测试。
+  delete cloned.devtool;
 
-# 如果当时没有网络请求接受策略，这意味着策略处于空闲状态，即使服务器关闭，测试也不会启动。那时，您可以通过手动启动测试来更新服务器状态，但是这没有任何意义)。
+  let target = gulp.src('resources/load-cookie-with-consent.html');
 
-;available=policy-name-2, Sample-A, Sample-B, Sample-C
+  let sources = gulp.src(['src/cookieSyncWithConsent.js'])
 
-# 类型：负载均衡(round-robin)
+    .pipe(webpackStream(cloned))
 
-# 指向在候选服务器中指向下一个服务器以进行下一次连接。
+    .pipe(uglify());
 
-;round-robin=policy-name-3, Sample-A, Sample-B, Sample-C
+  return target.pipe(inject(sources, {
 
-# 类型：延迟测试(url-latency-benchmark)
+    starttag: '// cookie-sync start',
 
-# 策略指向具有最佳 URL 延迟(公差，单位毫秒)结果的服务器。
+    endtag: '// end',
 
-# 当用户在 Quantumult X 中手动启动 URL 测试时，策略结果也会被更新。
+    transform: function (filePath, file) {
 
-# 该类型的策略有一个名为 check-interval(秒) 的参数，如果此策略已经被任何请求激活，则将考虑该间隔。
+      return file.contents.toString('utf8')
 
-;url-latency-benchmark=policy-name-8, resource-tag-regex=^sample, server-tag-regex=^example, check-interval=600, tolerance=0
+    }
 
-# SSID
+  }))
 
-# 策略根据网络环境的不同指向服务器。
+    .pipe(gulp.dest('dist'));
 
-;ssid=policy-name-4, Sample-A, Sample-B, LINK_22E171:Sample-B, LINK_22E172:Sample-C
+}
 
-[policy]
+function buildUidDev() {
 
-#ssid=SSID,Proxy,Auto,ZZM-5G:Auto,ZZM:direct, img-url=https://raw.githubusercontent.com/zzm1908822163/Qure/master/IconSet/Color/SSID.png
+  var cloned = _.cloneDeep(webpackConfig);
 
-static=Country, Auto, HK, TW, JP, SG, US, proxy, img-url=https://raw.githubusercontent.com/zzm1908822163/Qure/master/IconSet/Color/Global.png
+  delete cloned.devtool;
 
-url-latency-benchmark=Auto, resource-tag-regex=^, check-interval=600, tolerance=0, img-url=https://raw.githubusercontent.com/zzm1908822163/Qure/master/IconSet/Color/Auto.png
+  cloned.output.filename = 'uid.js';
 
-static=Final, Auto, HK, TW, JP, SG, US, proxy, direct, img-url=https://raw.githubusercontent.com/zzm1908822163/Qure/master/IconSet/Color/Find_My.png
+  return gulp.src(['src/ssp-userids/uid.js'])
 
-static=Streaming, Auto, HK, TW, JP, SG, US, img-url=https://raw.githubusercontent.com/zzm1908822163/Qure/master/IconSet/Color/StreamingSE.png
+    .pipe(webpackStream(cloned))
 
-static=Apple, direct, US, img-url=https://raw.githubusercontent.com/zzm1908822163/Qure/master/IconSet/Color/Apple.png
+    .pipe(gulp.dest('build'));
 
-static=Bilibili, direct, HK, TW, img-url=https://raw.githubusercontent.com/zzm1908822163/mini/master/Color/Bili.png
+}
 
-static=社交, Auto, HK, TW, JP, SG, US, proxy, img-url=https://raw.githubusercontent.com/zzm1908822163/Qure/master/IconSet/Color/Telegram.png
+function buildProd() {
 
-static=PayPal, direct, US, img-url=https://raw.githubusercontent.com/zzm1908822163/Qure/master/IconSet/Color/PayPal.png
+  let cloned = _.cloneDeep(webpackConfig);
 
-url-latency-benchmark=HK, server-tag-regex=(?=.*(港|HK|(?i)Hong))^((?!(台|日|新|美|US|SG|JP|KR|TW)).)*$, check-interval=600, tolerance=0, img-url=https://raw.githubusercontent.com/zzm1908822163/Qure/master/IconSet/Color/Hong_Kong.png
+  delete cloned.devtool;
 
-url-latency-benchmark=TW, server-tag-regex=(?=.*(台|TW|(?i)Taiwan))^((?!(港|日|韩|新|美)).)*$, check-interval=600, tolerance=0, img-url=https://raw.githubusercontent.com/zzm1908822163/Qure/master/IconSet/Color/Taiwan.png
+  return gulp.src(['src/creative.js'])
 
-url-latency-benchmark=JP, server-tag-regex=(?=.*(日本|日|JP|(?i)Japan|东京))^((?!(港|台|新|美|US|SG|HK|TW)).)*$, check-interval=600, tolerance=0, img-url=https://raw.githubusercontent.com/zzm1908822163/Qure/master/IconSet/Color/Japan.png
+    .pipe(webpackStream(cloned))
 
-url-latency-benchmark=SG, server-tag-regex=(?=.*(新加坡|狮城|新|SG|(?i)SIN))^((?!(港|台|日|美|US|JP|HK|TW)).)*$, check-interval=600, tolerance=0, img-url=https://raw.githubusercontent.com/zzm1908822163/Qure/master/IconSet/Color/Singapore.png
+    .pipe(rename({ extname: '.max.js' }))
 
-url-latency-benchmark=US, server-tag-regex=(?=.*(美|US|(?i)States|American))^((?!(港|台|日|新加坡|狮城|SG|JP|HK|TW)).)*$, check-interval=600, tolerance=0, img-url=https://raw.githubusercontent.com/zzm1908822163/Qure/master/IconSet/Color/United_States.png
+    .pipe(gulp.dest('dist'))
 
-#服务器远程订阅
+    .pipe(uglify())
 
-[server_remote]
+    .pipe(header(banner, { creative: creative }))
 
-#规则分流远程订阅
+    .pipe(rename({
 
-#远程分流模块，可使用force-policy来强制使用策略偏好, 替换远程规则内所指定的策略组
+      basename: 'creative',
 
-#同样的
+      extname: '.js'
 
-# update-interval 为更新时间参数，单位 秒, 默认更新时间为 24*60*60=86400 秒，也就是24小时.
+    }))
 
-# opt-parser=true/false 用于控制是否对本订阅 开启资源解析器，不写或者 false 表示不启用解析器;
+    .pipe(gulp.dest('dist'));
 
-#支持本地/iCloud规则文件，位于Quantumult X/Profiles路径下，filter.txt, tag=本地分流, enabled=false
+}
 
-[filter_remote]
+function buildNative() {
 
-https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/rule/Apple/Apple.list, tag=Apple.list, force-policy=Apple, update-interval=-1, opt-parser=false, enabled=true
+  var cloned = _.cloneDeep(webpackConfig);
 
-https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/rule/BiliBili/BiliBili.list, tag=Bilibili, force-policy=Bilibili, update-interval=-1, opt-parser=false, enabled=true
+  delete cloned.devtool;
 
-https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/rule/Cydia/Cydia.list, tag=Cydia, force-policy=Auto, update-interval=-1, opt-parser=false, enabled=true
+  cloned.output.filename = 'native-trk.js';
 
-https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/rule/Facebook/Facebook.list, tag=Facebook, force-policy=社交, update-interval=-1, opt-parser=false, enabled=true
+  return gulp.src(['src/nativeTrackers.js'])
 
-https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/rule/Game/Asphalt9.list, tag=Game, force-policy=direct, update-interval=-1, opt-parser=false, enabled=true
+    .pipe(webpackStream(cloned))
 
-https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/rule/GitHub/GitHub.list, tag=GitHub, force-policy=Auto, update-interval=-1, opt-parser=false, enabled=true
+    .pipe(uglify())
 
-https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/rule/PayPal/PayPal.list, tag=PayPal, force-policy=PayPal, update-interval=-1, opt-parser=false, enabled=true
+    .pipe(header('/* v<%= creative.version %>\n' + dateString + ' */\n', { creative: creative }))
 
-https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/rule/Telegram/Telegram.list, tag=Telegram, force-policy=社交, update-interval=-1, opt-parser=false, enabled=true
+    .pipe(gulp.dest('dist'));
 
-https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/rule/Twitter/Twitter.list, tag=Twitter, force-policy=社交, update-interval=-1, opt-parser=false, enabled=true
+}
 
-https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/rule/Apple/TestFlight.list, tag=Testflight, force-policy=Auto, update-interval=-1, opt-parser=false, enabled=true
+function buildNativeRender() {
 
-https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/rule/YouTube/YouTube.list, tag=YouTube, force-policy=Streaming, update-interval=-1, opt-parser=false, enabled=true
+  var cloned = _.cloneDeep(webpackConfig);
 
-#rewrite 复写远程订阅
+  delete cloned.devtool;
 
-#远程复写模块，内包含主机名hostname以及复写rewrite规则
+  cloned.output.filename = 'native-render.js';
 
-# update-interval 为更新时间参数，单位 秒, 默认更新时间为 24*60*60=86400 秒，也就是24小时.
+  return gulp.src(['src/nativeRender.js'])
 
-# opt-parser=true/false 用于控制是否对本订阅 开启资源解析器，不写或者 false 表示不启用解析器;
+    .pipe(webpackStream(cloned))
 
-[rewrite_remote]
+    .pipe(uglify())
 
-https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/Rewrite/EmbyUnlock/EmbyUnlock.conf, tag=emby, update-interval=-1, opt-parser=false, enabled=true
+    .pipe(header('/* v<%= creative.version %>\n' + dateString + ' */\n', { creative: creative }))
 
-https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/Rewrite/BiliBili-Auto/BiliBili-Auto.conf, tag=bilibili, update-interval=-1, opt-parser=false, enabled=true
+    .pipe(gulp.dest('dist'));
 
-https://raw.githubusercontent.com/zzm1908822163/QuantumultX/master/Rewrite/TestFlightDownload/TestFlightDownload.conf, tag=TestFlight区域限制解除, update-interval=-1, opt-parser=false, enabled=true
+}
 
-# 本地服务器部分
+function buildUid() {
 
-[server_local]
+  var cloned = _.cloneDeep(webpackConfig);
 
-#本地分流规则(对于完全相同的某条规则，本地的将优先生效)
+  delete cloned.devtool;
 
-[filter_local]
+  cloned.output.filename = 'uid.js';
 
-host-keyword, google, Auto
+  return gulp.src(['src/ssp-userids/uid.js'])
 
-host-suffix, ivapp.cn, Auto
+  .pipe(webpackStream(cloned))
 
-host-suffix, local, direct
+    .pipe(uglify())
 
-ip-cidr, 192.168.0.0/16, direct
+    .pipe(header('/* v<%= creative.version %>\n' + dateString + ' */\n', { creative: creative }))
 
-ip-cidr, 10.0.0.0/8, direct
+    .pipe(gulp.dest('dist'));
 
-ip-cidr, 172.16.0.0/12, direct
+}
 
-ip-cidr, 127.0.0.0/8, direct
+// Run the unit tests.
 
-ip-cidr, 100.64.0.0/10, direct
+//
 
-ip-cidr, 224.0.0.0/4, direct
+// By default, this runs in headless chrome.
 
-ip6-cidr, fe80::/10, direct
+//
 
-ip-cidr, 203.107.1.1/24, reject
+// If --watch is given, the task will open the karma debug window
 
-geoip,cn,direct
+// If --browserstack is given, it will run the full suite of currently supported browsers.
 
-FINAL, Final
+// If --e2e is given, it will run test defined in ./test/e2e/specs in browserstack
 
-#不在上述规则中(远程以及本地)的剩余请求，将走final 指定的节点/策略，这里即是 → Final, 请根据自己的需求来选择直连或节点、策略FINAL, Final
+function test(done) {
 
-#本地复写规则
+  if (argv.e2e) {
 
-[rewrite_local]
+    let wdioCmd = path.join(__dirname, 'node_modules/.bin/wdio');
 
-[task_local]
+    let wdioConf = path.join(__dirname, 'wdio.conf.js');
 
-0 8 * * * moji.js, tag=墨迹天气, enabled=true
+    let wdioOpts = [
 
-[http_backend]
+      wdioConf
 
-https://raw.githubusercontent.com/zzm1908822163/scripts/master/box/chavy.boxjs.js, tag=boxjs, path=^/, enabled=true
+    ];
 
-[mitm]
+    return execa(wdioCmd, wdioOpts, { stdio: 'inherit' });
 
-hostname = 
+  } else {
 
-passphrase = 
+    let karmaConf = karmaConfMaker(false, argv.browserstack, argv.watch);
 
-p12 =
+    new KarmaServer(karmaConf, newKarmaCallback(done)).start();
 
+  }
+
+}
+
+function newKarmaCallback(done) {
+
+  return function(exitCode) {
+
+    if (exitCode) {
+
+      done(new Error('Karma tests failed with exit code' + exitCode));
+
+      if (argv.browserstack) {
+
+        process.exit(exitCode);
+
+      }
+
+    } else {
+
+      done();
+
+      if (argv.browserstack) {
+
+        process.exit(exitCode);
+
+      }
+
+    }
+
+  } 
+
+}
+
+function setupE2E(done) {
+
+  argv.e2e = true;
+
+  done();
+
+}
+
+gulp.task('test', gulp.series(clean, test));
+
+gulp.task('e2e-test', gulp.series(clean, setupE2E, gulp.parallel(buildDev, buildCookieSync, buildCookieSyncWithConsent, buildNativeDev, buildNativeRenderDev, buildUidDev, watch), test));
+
+function watch(done) {
+
+  const mainWatcher = gulp.watch([
+
+    'src/**/*.js',
+
+    'test/**/*.js'
+
+  ]);
+
+  connect.server({
+
+    https: argv.https,
+
+    livereload: true,
+
+    port,
+
+    root: './'
+
+  });
+
+  mainWatcher.on('all', gulp.series(clean, gulp.parallel(buildDev, buildNativeDev, buildNativeRenderDev, buildCookieSync, buildCookieSyncWithConsent, buildUidDev), test));
+
+  done();
+
+}
+
+function openWebPage() {
+
+  return opens(`${(argv.https) ? 'https' : 'http'}://localhost:${port}`);
+
+}
+
+gulp.task('serve', gulp.series(clean, gulp.parallel(buildDev, buildNativeDev, buildNativeRenderDev, buildCookieSync, buildCookieSyncWithConsent, buildUidDev, watch, test), openWebPage));
+
+gulp.task('build', gulp.parallel(buildProd, buildCookieSync, buildCookieSyncWithConsent, buildNative, buildNativeRender, buildUid));
+
+gulp.task('test-coverage', (done) => {
+
+  new KarmaServer(karmaConfMaker(true, false, false), newKarmaCallback(done)).start();
+
+});
+
+gulp.task('view-coverage', (done) => {
+
+  const coveragePort = 1999;
+
+  const localhost = (argv.host) ? argv.host : 'localhost';
+
+  connect.server({
+
+    port: coveragePort,
+
+    root: 'build/coverage/karma_html',
+
+    livereload: false
+
+  });
+
+  opens('http://' + localhost + ':' + coveragePort);
+
+  done();
+
+});
+
+;
+
+const _ = require('lodash');
+
+const webpackConf = require('./webpack.conf');
+
+const karmaConstants = require('karma').constants;
+
+const path = require('path');
+
+function setBrowsers(karmaConf, browserstack, watchMode) {
+
+  if (browserstack) {
+
+    karmaConf.browserStack = {
+
+      username: process.env.BROWSERSTACK_USERNAME,
+
+      accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
+
+      build: 'PUC Unit Tests ' + new Date().toLocaleString()
+
+    }
+
+    karmaConf.customLaunchers = require('./browsers.json')
+
+    karmaConf.browsers = Object.keys(karmaConf.customLaunchers);
+
+  } else if (watchMode) {
+
+    karmaConf.browsers = ['Chrome'];
+
+  }
+
+}
+
+function setReporters(karmaConf, codeCoverage, browserstack) {
+
+  // In browserstack, the default 'progress' reporter floods the logs.
+
+  // The karma-spec-reporter reports failures more concisely
+
+  if (browserstack) {
+
+    karmaConf.reporters = ['spec'];
+
+    karmaConf.specReporter = {
+
+      maxLogLines: 100,
+
+      suppressErrorSummary: false,
+
+      suppressSkipped: false,
+
+      suppressPassed: true
+
+    };
+
+  }
+
+  
+
+  if (codeCoverage) {
+
+    karmaConf.reporters.push('coverage-istanbul');
+
+    karmaConf.coverageIstanbulReporter = {
+
+      reports: ['html', 'lcovonly', 'text-summary'],
+
+      dir: path.join(__dirname, 'build', 'coverage'),
+
+      'report-config': {
+
+        html: {
+
+          subdir: 'karma_html',
+
+          urlFriendlyName: true, // simply replaces spaces with _ for files/dirs
+
+        }
+
+      }
+
+    }  
+
+  }
+
+}
+
+function newWebpackConfig(codeCoverage) {
+
+  const webpackConfig = _.cloneDeep(webpackConf);
+
+  webpackConfig.devtool = 'inline-source-map';
+
+  if (codeCoverage) {
+
+    webpackConfig.module.rules.push({
+
+      test: /\.js$/,
+
+      enforce: 'post',
+
+      use: {
+
+        loader: 'istanbul-instrumenter-loader',
+
+        options: { esModules: true }
+
+      },
+
+      exclude: /(node_modules)|(test)|(resources)|(template)|(testpages)/
+
+    });
+
+  }
+
+  return webpackConfig;
+
+}
+
+module.exports = function(codeCoverage, browserstack, watchMode) {
+
+  const webpackConfig = newWebpackConfig(codeCoverage);
+
+  const files = ['test/test_index.js'];
+
+  if (watchMode) {
+
+    files.push('test/helpers/karma-init.js');
+
+  }
+
+  const config = {
+
+    // base path that will be used to resolve all patterns (eg. files, exclude)
+
+    basePath: './',
+
+    plugins: [
+
+      'karma-mocha',
+
+      'karma-chrome-launcher',
+
+      'karma-webpack',
+
+      'karma-chai',
+
+      'karma-sourcemap-loader',
+
+      'karma-sinon',
+
+      'karma-coverage',
+
+      'karma-browserstack-launcher',
+
+      'karma-spec-reporter',
+
+      'karma-mocha-reporter',
+
+      'karma-coverage-istanbul-reporter'
+
+    ],
+
+    webpack: webpackConfig,
+
+    webpackMiddleware: {
+
+      logLevel: 'error'
+
+    },
+
+    // frameworks to use
+
+    // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
+
+    frameworks: ['mocha', 'chai', 'sinon'],
+
+    // list of files / patterns to load in the browser
+
+    files: files,
+
+    // list of files / patterns to exclude
+
+    exclude: [
+
+    ],
+
+    // preprocess matching files before serving them to the browser
+
+    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+
+    preprocessors: {
+
+      'test/test_index.js': [ 'webpack', 'sourcemap' ]
+
+    },
+
+    // test results reporter to use
+
+    // possible values: 'dots', 'progress'
+
+    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+
+    reporters: ['mocha'],
+
+    mochaReporter: {
+
+      showDiff: true,
+
+      output: 'minimal'
+
+    },
+
+    // web server port
+
+    port: 9876,
+
+    // enable / disable colors in the output (reporters and logs)
+
+    colors: true,
+
+    // level of logging
+
+    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+
+    logLevel: karmaConstants.LOG_INFO,
+
+    // enable / disable watching file and executing tests whenever any file changes
+
+    autoWatch: true,
+
+    // start these browsers
+
+    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+
+    browsers: ['ChromeHeadless'],
+
+    // Continuous Integration mode
+
+    // if true, Karma captures browsers, runs the tests and exits
+
+    singleRun: !watchMode,
+
+    // Concurrency level
+
+    // how many browser should be started simultaneous
+
+    concurrency: Infinity,
+
+    browserDisconnectTimeout: 100000,
+
+    browserDisconnectTolerance: 1, // default 0
+
+    browserNoActivityTimeout: 4 * 60 * 1000, // default 10000
+
+    captureTimeout: 4 * 60 * 1000, // default 60000
+
+  }
+
+  setReporters(config, codeCoverage, browserstack);
+
+  setBrowsers(config, browserstack, watchMode);
+
+  return config;
+
+}
+
+;
+
+const browsers = require('./browsers.json');
+
+function getCapabilities() {
+
+  function getPlatform(os) {
+
+    const platformMap = {
+
+      'Windows': 'WINDOWS',
+
+      'OS X': 'MAC',
+
+    }
+
+    return platformMap[os];
+
+  }
+
+  let capabilities = []
+
+  Object.keys(browsers).forEach(key => {
+
+    let browser = browsers[key];
+
+    capabilities.push({
+
+      browserName: browser.browser,
+
+      platform: getPlatform(browser.os),
+
+      version: browser.browser_version,
+
+      acceptSslCerts: true,
+
+      build: 'UC ' + new Date().toLocaleString()
+
+    });
+
+  });
+
+  return capabilities;
+
+}
+
+exports.config = {
+
+  specs: [
+
+    './test/e2e/specs/*.js'
+
+  ],
+
+  services: ['browserstack'],
+
+  user: process.env.BROWSERSTACK_USERNAME,
+
+  key: process.env.BROWSERSTACK_ACCESS_KEY,
+
+  browserstackLocal: true,
+
+  // Do not increase this, since we have only 5 parallel tests in browserstack account
+
+  maxInstances: 5,
+
+  capabilities: getCapabilities(),
+
+  logLevel: 'silent',               // Level of logging verbosity: silent | verbose | command | data | result | error
+
+  coloredLogs: true,
+
+  waitforTimeout: 90000,            // Default timeout for all waitFor* commands.
+
+  connectionRetryTimeout: 90000,    // Default timeout in milliseconds for request if Selenium Grid doesn't send response
+
+  connectionRetryCount: 3,          // Default request retries count
+
+  framework: 'mocha',
+
+  mochaOpts: {
+
+    ui: 'bdd',
+
+    timeout: 90000,
+
+    compilers: ['@babel/register'],
+
+  },
+
+  // if you see error, update this to spec reporter and logLevel above to get detailed report.
+
+  reporters: ['concise']
+
+};;
+
+var creative = require('./package.json');
+
+var StringReplacePlugin = require('string-replace-webpack-plugin');
+
+var path = require('path');
+
+module.exports = {
+
+  devtool: 'source-map',
+
+  resolve: {
+
+    modules: [
+
+      path.resolve('.'),
+
+      'node_modules'
+
+    ],
+
+  },
+
+  output: {
+
+    filename: 'creative.js',
+
+  },
+
+  module: {
+
+    rules: [
+
+      {
+
+        test: /\.js$/,
+
+        exclude: path.resolve('./node_modules'), // required to prevent loader from choking non-Prebid.js node_modules
+
+        use: [
+
+          {
+
+            loader: 'babel-loader',
+
+            options: {
+
+              presets: ['@babel/preset-env']
+
+            }
+
+          }
+
+        ]
+
+      },
+
+      {
+
+        test: /\.js$/,
+
+        include: /(src|test|testpages)/,
+
+        loader: StringReplacePlugin.replace({
+
+          replacements: [
+
+            {
+
+              pattern: /\$\$PREBID_GLOBAL\$\$/g,
+
+              replacement: function (match, p1, offset, string) {
+
+                return creative.globalVarName;
+
+              }
+
+            }
+
+          ]
+
+        })
+
+      }
+
+    ]
+
+  }
+
+};
+
+//# sourceMappingURL=/sm/9ff1f7b1bf333614ca21706f01c3d8c7d6b6c32a1667f3627487d1929f793565.map
