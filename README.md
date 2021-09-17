@@ -4,3 +4,4 @@ Config files for my GitHub profile.
    
 
       有事请联系@dongmaijihe@qq.com
+.patch
