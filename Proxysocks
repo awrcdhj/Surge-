@@ -1,5 +1,5 @@
 [Local host]
-localhost=127.0.0.1
+localhost=198.18.0.1/4
 Local host-🇭🇰 香港01 ➤ 高速 ➤ x1 = vmess, 23.101.4.210, 80, username=3ddf3b85-e7c3-3940-9bff-c31d26066d9b, tls=false, ws=true, ws-path=/TS/recharge/tzUrl.html, sni=wx.tenpay.com, ws-headers=Host:wx.tenpay.com, skip-cert-verify=0, tfo=true, udp-relay=true
 Local host-🇭🇰 香港3 ➤ 独享 ➤ x1 = vmess, 52.184.38.35, 80, username=3ddf3b85-e7c3-3940-9bff-c31d26066d9b, tls=false, ws=true, ws-path=/, sni=wx.tenpay.com, ws-headers=Host:wx.tenpay.com, skip-cert-verify=0, tfo=true, udp-relay=true
 Local host-🇭🇰 香港2 ➤ 独享 ➤ x1 = vmess, 52.184.17.163, 80, username=3ddf3b85-e7c3-3940-9bff-c31d26066d9b, tls=false, ws=true, ws-path=/, sni=52.184.17.163, ws-headers=Host:52.184.17.163, skip-cert-verify=0, tfo=true, udp-relay=true
